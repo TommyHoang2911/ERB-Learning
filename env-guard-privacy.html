@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Env Guard</title>
+<style>
+  :root {
+    --text: #1a1f2b;
+    --muted: #5b6472;
+    --border: #e4e7ec;
+    --accent: #dc2626;
+    --bg: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .updated { color: var(--muted); font-size: 13px; margin: 0 0 32px; }
+  h2 { font-size: 17px; margin: 36px 0 10px; padding-top: 4px; }
+  p, li { font-size: 15px; color: #2c3341; }
+  ul { padding-left: 20px; margin: 10px 0; }
+  li { margin-bottom: 6px; }
+  .lede {
+    font-size: 15.5px; color: #2c3341; background: #f7f8fa; border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 8px;
+  }
+  code {
+    background: #f1f3f6; border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 6px; font-size: 13.5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .03em; }
+  .no { color: var(--accent); font-weight: 600; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  a { color: #2563eb; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Privacy Policy — Env Guard</h1>
+  <p class="updated">Effective date: August 19, 2026</p>
+
+  <p class="lede">
+    Env Guard is a Chrome extension that shows a warning banner, a colored border, and a tab-title
+    tag when you visit a website that matches an environment rule you define yourself (for example,
+    marking an internal IP address as "production"). This page explains what data the extension
+    accesses and how it is handled.
+  </p>
+
+  <h2>Data Env Guard accesses</h2>
+  <p>To decide whether to show a warning on the page you're viewing, Env Guard's content script reads:</p>
+  <ul>
+    <li>The current tab's URL — specifically the hostname and port — compared against the rules you configured.</li>
+    <li>The current tab's page title — read and modified only to prepend your chosen environment label (e.g. <code>[PROD]</code>).</li>
+  </ul>
+  <p>
+    This happens entirely on your device, in memory, for the sole purpose of matching the current
+    page against your own rules and rendering the warning UI. It is not logged, kept as a history, or
+    sent anywhere.
+  </p>
+
+  <h2>Data Env Guard stores</h2>
+  <p>The only data Env Guard stores is what you enter yourself on its Settings page:</p>
+  <ul>
+    <li>Your environment rules (host, port, environment label, and color)</li>
+    <li>The extension's enabled/disabled toggle</li>
+  </ul>
+  <p>
+    This is saved locally in your browser profile using Chrome's <code>chrome.storage.local</code>
+    API. It stays on your device, is not linked to any account, and Env Guard has no backend server
+    to send it to.
+  </p>
+
+  <h2>What Env Guard does not do</h2>
+  <ul>
+    <li>Does not transmit any data to external servers — the extension has no backend</li>
+    <li>Does not sell, rent, or share data with any third party</li>
+    <li>Does not use data for advertising, analytics, or tracking</li>
+    <li>Does not collect personally identifiable information, passwords, payment information, or the content of the pages you visit</li>
+    <li>Does not use your data for any purpose beyond showing the environment warning</li>
+  </ul>
+
+  <h2>Why each permission is needed</h2>
+  <table>
+    <thead><tr><th>Permission</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>storage</code></td><td>Save your rules and settings locally on your device.</td></tr>
+      <tr><td><code>activeTab</code></td><td>Let the popup show which rule matches the tab you currently have open.</td></tr>
+      <tr><td><code>tabs</code></td><td>Read the active tab's URL in the popup, reload the tab after you save a new rule, and clear the toolbar badge when a new page starts loading.</td></tr>
+      <tr><td>Host permission (<code>&lt;all_urls&gt;</code>)</td><td>Env Guard's rules can point to any domain or internal IP you choose, so the extension needs to be able to check the URL on any page to compare it against your rules.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Compliance with the Chrome Web Store User Data Policy (Limited Use)</h2>
+  <p>Env Guard's handling of data complies with the Chrome Web Store User Data Policy, including the Limited Use requirements:</p>
+  <ul>
+    <li>Data is used only to provide the extension's single purpose — detecting and warning about environment matches.</li>
+    <li><span class="no">We do not</span> sell or transfer user data to third parties.</li>
+    <li><span class="no">We do not</span> use or transfer user data for purposes unrelated to the extension's single purpose.</li>
+    <li><span class="no">We do not</span> use or transfer user data to determine creditworthiness or for lending purposes.</li>
+  </ul>
+
+  <h2>Children's privacy</h2>
+  <p>Env Guard is a developer tool and is not directed at children. It does not knowingly collect data from children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy or the extension can be raised via github.com/tommyhoang2911/env-guard/issues.
+  </p>
+
+  <footer>Env Guard — Dev/Staging/Prod Warning</footer>
+</div>
+</body>
+</html>
